@@ -1,0 +1,15 @@
+body{
+    background-color: black;
+}
+.main-contianer{
+    border-radius: 5px;
+}
+
+
+.form-container{
+    margin: 50px;
+}
+
+.Pre{
+    margin-top: 15%;
+}
