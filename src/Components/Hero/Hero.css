@@ -6,10 +6,16 @@ body{
 }
 
 
+
 .form-container{
-    margin: 50px;
+    margin: 30px;
 }
 
 .Pre{
-    margin-top: 15%;
+    margin-top: 10%;
+
+}
+
+#sec-add{
+   width: 112px; 
 }

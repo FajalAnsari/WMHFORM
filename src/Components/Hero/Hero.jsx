@@ -28,6 +28,7 @@
 // export default Hero;
 
 import React, { useState } from 'react';
+import "../Hero/Hero.css";
 
 function App() {
     const [name, setName] = useState('');
@@ -85,7 +86,6 @@ function App() {
 
     return (
         <>
-
             <div className='container bg-dark w-75 main-contianer'>
                 <div className='row Pre p-5'>
                     <div className='col-10 mx-auto'>
@@ -97,75 +97,42 @@ function App() {
                                 <input className='form-control' value={email} onChange={handleEmailChange} type="text" placeholder='Enter Your Email:' />
                             </div>
                             <div className='col-2'>
-                            <input className='form-control' type="file" multiple onChange={handleImageUpload} />
+                                <input type="file" className='form-control btn-outline-danger w-75' multiple onChange={handleImageUpload} />
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-
-
-
             <div>
-
-                <input type="text" value={name} onChange={handleNameChange} />
-                <br />
-                <br />
-                <label>Email:</label>
-                <input type="email" value={email} onChange={handleEmailChange} />
-                <br />
-                <br />
-                <input type="file" multiple onChange={handleImageUpload} />
-                <br />
-                <br />
-                {selectedImage && (
-                    <img src={selectedImage} alt="preview" width="200" height="200" />
-                )}
-                <br />
-                <br />
-                {images.map((image, index) => (
-                    <div key={index}>
-                        <img
-                            src={image}
-                            alt="preview"
-                            width="100"
-                            height="100"
-                            onClick={() => setSelectedImage(image)}
-                        />
-                        <br />
-                        <br />
-                        {selectedImage === image && (
-                            <div>
-                                <label>Caption:</label>
-                                <input
-                                    type="text"
-                                    value={captions[index] || ''}
-                                    onChange={(event) => handleCaptionChange(event, index)}
-                                />
-                                <br />
-                                <br />
-                                <label>Model Name:</label>
-                                <input
-                                    type="text"
-                                    value={modelNames[index] || ''}
-                                    onChange={(event) => handleModelNameChange(event, index)}
-                                />
-                                <br />
-                                <br />
-                                <label>Credits:</label>
-                                <input
-                                    type="text"
-                                    value={credits[index] || ''}
-                                    onChange={(event) => handleCreditChange(event, index)}
-                                />
-                                <br />
-                                <br />
+                <div className='container bg-light w-75 main-contianer'>
+                    <div className='row p-5'>
+                        <div className='col-10 mx-auto'>
+                            <div className='row'>
+                                <div className='col-10 mx-auto'>
+                                    {images.map((image, index) => (
+                                        <div className='col-6 d-flex' key={index}>
+                                            <img className='p-3 m-2 img-thumbnail' src={image} alt="preview" width="400" height="450" onLoad={() => setSelectedImage(image)} />
+                                            {selectedImage === image && (
+                                                <div className='col-6 w-100 m-5'>
+                                                    <label>Caption:</label>
+                                                    <input className='form-control p-2 mt-2' type="text" value={captions[index] || ''} onChange={(event) => handleCaptionChange(event, index)}/>
+                                                    <label>Credits</label>
+                                                    <input className='form-control p-2  mt-2' type="text" value={modelNames[index] || ''} onChange={(event) => handleModelNameChange(event, index)}/>
+                                                    <label>Credits:</label> 
+                                                    <input className='form-control p-2  mt-2' type="text" value={credits[index] || ''} onChange={(event) => handleCreditChange(event, index)} />
+                                                    <label>Credits:</label>
+                                                    <input className='form-control p-2  mt-2' type="text" value={credits[index] || ''} onChange={(event) => handleCreditChange(event, index)} />
+                                                    <label>Credits:</label>
+                                                    <input className='form-control p-2  mt-2' type="text" value={credits[index] || ''} onChange={(event) => handleCreditChange(event, index)} />
+                                                </div>
+                                            )}
+                                        </div>
+                                    ))}
+                                </div>
                             </div>
-                        )}
-                        <br />
+                        </div>
                     </div>
-                ))}
+                </div>
             </div>
         </>
 
