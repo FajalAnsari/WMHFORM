@@ -10,6 +10,7 @@ function App() {
     const [images, setImages] = useState([]);
     const [selectedImage, setSelectedImage] = useState(null);
     const [captions, setCaptions] = useState([]);
+    const [Credits, setCredits] = useState([]);
 
     const handleNameChange = (event) => {
         setName(event.target.value);
@@ -24,6 +25,11 @@ function App() {
         const newCaptions = [...captions];
         newCaptions[index] = event.target.value;
         setCaptions(newCaptions);
+    };
+    const handleCredtisChange = (event, index) => {
+        const newCredits = [...Credits];
+        newCredits[index] = event.target.value;
+        setCredits(newCredits);
     };
    
 
@@ -91,6 +97,8 @@ function App() {
                                                 <div className='col-6 w-100 m-5'>
                                                     <label>Caption:</label>
                                                     <input className='form-control p-2 mt-2' placeholder='Caption' type="text" value={captions[index] || ''} onChange={(event) => handleCaptionChange(event, index)}/>
+                                                    <label>Credits:</label>
+                                                    <input className='form-control p-2 mt-2' placeholder='Credits' type="text" value={Credits[index] || ''} onChange={(event) => handleCredtisChange(event, index)}/>
                                                     <button className='btn btn-outline-danger button mt-4'><i class="bi bi-trash"></i></button>
                                                 </div>
                                             )}
