@@ -2,13 +2,12 @@
 
 import React, { useState } from 'react';
 import "../Hero/Hero.css";
-import {dataref} from '../firebase';
+import { dataref } from '../firebase';
 
 function App() {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [images, setImages] = useState([]);
-    const [selectedImage, setSelectedImage] = useState(null);
     const [captions, setCaptions] = useState([]);
     const [Credits, setCredits] = useState([]);
 
@@ -31,19 +30,19 @@ function App() {
         newCredits[index] = event.target.value;
         setCredits(newCredits);
     };
-   
 
-     // Server Side codding 
-     const handleSubmit = () => {
+
+    // Server Side codding 
+    const handleSubmit = () => {
         dataref.ref("user").push().set({
-            name : name,
-            email : email,
-            captions : captions,
+            name: name,
+            email: email,
+            captions: captions,
 
         }).catch(alert);
         alert("Success Fully Submitted")
 
-     }
+    }
 
     const handleImageUpload = (event) => {
         const files = Array.from(event.target.files);
@@ -60,8 +59,6 @@ function App() {
 
             reader.readAsDataURL(file);
         });
-
-        setSelectedImage(newImages[0]);
     };
 
     return (
@@ -71,13 +68,13 @@ function App() {
                     <div className='col-10 mx-auto'>
                         <div className='row'>
                             <div className='col-5'>
-                                <input className='form-control' value={name}  onChange={handleNameChange} type="text" placeholder='Enter Your Name:' />
+                                <input className='form-control' value={name} onChange={handleNameChange} type="text" placeholder='Enter Your Name:' />
                             </div>
                             <div className='col-5'>
                                 <input className='form-control' value={email} onChange={handleEmailChange} type="text" placeholder='Enter Your Email:' />
                             </div>
                             <div className='col-2'>
-                                <input type="file"  className='form-control btn-outline-danger w-75' multiple onChange={handleImageUpload}/>
+                                <input type="file" className='form-control btn-outline-danger w-75' multiple onChange={handleImageUpload} />
                             </div>
                         </div>
                     </div>
@@ -91,22 +88,19 @@ function App() {
                                 <div className='col-10 mx-auto'>
                                     {images.map((image, index) => (
                                         <div className='col-6 col-xs-12 d-flex' key={index}>
-                                            <>
-                                            <img className='p-3 m-2 img-thumbnail' src={image} alt="preview" width="400" height="450" onLoad={() => setSelectedImage(image)} />
-                                            {selectedImage === image && (
-                                                <div className='col-6 w-100 m-5'>
-                                                    <label>Caption:</label>
-                                                    <input className='form-control p-2 mt-2' placeholder='Caption' type="text" value={captions[index] || ''} onChange={(event) => handleCaptionChange(event, index)}/>
-                                                    <label>Credits:</label>
-                                                    <input className='form-control p-2 mt-2' placeholder='Credits' type="text" value={Credits[index] || ''} onChange={(event) => handleCredtisChange(event, index)}/>
-                                                    <button className='btn btn-outline-danger button mt-4'><i class="bi bi-trash"></i></button>
-                                                </div>
-                                            )}
-                                            </>
+                                            <img className='p-3 m-2 img-thumbnail' src={image} alt="preview" width="400" height="450" />
+                                            <div className='col-6 w-100 m-5'>
+                                                <label>Caption:</label>
+                                                <input className='form-control p-2 mt-2' placeholder='Caption' type="text" value={captions[index] || ''} onChange={(event) => handleCaptionChange(event, index)} />
+                                                <label>Credits:</label>
+                                                <input className='form-control p-2 mt-2' placeholder='Credits' type="text" value={Credits[index] || ''} onChange={(event) => handleCredtisChange(event, index)} />
+                                                <button className='btn btn-outline-danger button mt-4'><i class="bi bi-trash"></i></button>
+                                            </div>
                                         </div>
                                     ))}
-                                     <button className='btn btn-success ms-2 w-100' onClick={handleSubmit}>Submit</button>
+                                    <button className='btn btn-success ms-2 w-100' onClick={handleSubmit}>Submit</button>
                                 </div>
+
                             </div>
                         </div>
                     </div>
