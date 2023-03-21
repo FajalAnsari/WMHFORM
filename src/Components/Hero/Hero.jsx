@@ -65,7 +65,12 @@ function App() {
     setImageUploads(newImageUploads);
   };
 
+
   const handleUploadClick = () => {
+    if (!name || !email) {
+      alert("Please fill name and email before uploading.");
+      return;
+    }
     setImageUploads([]);
     setUploadSuccess(false);
 
@@ -115,7 +120,8 @@ function App() {
       .catch((error) => {
         console.error(error);
       });
-  };
+  }
+
   return (
     <>
       <div className='container bg-dark w-75 main-contianer'>
@@ -123,10 +129,10 @@ function App() {
           <div className='col-10 mx-auto'>
             <div className='row'>
               <div className='col-5'>
-              <input className='form-control' value={name} onChange={handleNameChange} type="text" placeholder='Enter Your Name:' />
+              <input className='form-control' value={name} onChange={handleNameChange} required type="text" placeholder='Enter Your Name:' />
               </div>
               <div className='col-5'>
-              <input className='form-control' value={email} onChange={handleEmailChange} type="text" placeholder='Enter Your Email:' />
+              <input className='form-control' value={email} onChange={handleEmailChange} required type="text" placeholder='Enter Your Email:' />
               </div>
               <div className='col-2'>
                 <input type="file" className='form-control btn-outline-danger w-75' multiple onChange={handleImageChange} />
