@@ -7,13 +7,16 @@ import { storage, db } from "../firebase-config";
 function App() {
   const [imageUploads, setImageUploads] = useState([]);
   const [uploadSuccess, setUploadSuccess] = useState(false);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
 
-  const handleNameChange = () => {
-
-  }
-  const handleEmailChange = () => {
-
-  }
+  const handleNameChange = (event) => {
+    setName(event.target.value);
+  };
+  
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
+  };
 
   const handleImageChange = (event) => {
     const files = Array.from(event.target.files);
@@ -95,6 +98,8 @@ function App() {
             caption: url.caption,
             credit: url.credit,
             model: url.model,
+            name: name,
+            email: email,
           })
             .then(() => {
               console.log("Document successfully written!");
@@ -111,8 +116,6 @@ function App() {
         console.error(error);
       });
   };
-
-
   return (
     <>
       <div className='container bg-dark w-75 main-contianer'>
@@ -120,10 +123,10 @@ function App() {
           <div className='col-10 mx-auto'>
             <div className='row'>
               <div className='col-5'>
-                <input className='form-control' value={""} onChange={handleNameChange} type="text" placeholder='Enter Your Name:' />
+              <input className='form-control' value={name} onChange={handleNameChange} type="text" placeholder='Enter Your Name:' />
               </div>
               <div className='col-5'>
-                <input className='form-control' value={""} onChange={handleEmailChange} type="text" placeholder='Enter Your Email:' />
+              <input className='form-control' value={email} onChange={handleEmailChange} type="text" placeholder='Enter Your Email:' />
               </div>
               <div className='col-2'>
                 <input type="file" className='form-control btn-outline-danger w-75' multiple onChange={handleImageChange} />
@@ -172,5 +175,7 @@ function App() {
 }
 
 export default App;
+
+
 
 
