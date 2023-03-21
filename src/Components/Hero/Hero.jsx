@@ -105,7 +105,7 @@ function App() {
         });
 
         // Show success message
-        alert("Upload successful!");
+        // alert("Upload successful!");
       })
       .catch((error) => {
         console.error(error);
@@ -136,48 +136,32 @@ function App() {
         <div className='container bg-light w-75 main-contianer'>
           <div className='row p-5'>
             <div className='col-10 mx-auto'>
-              <div className='row'>
-                <div className="App">
+              <div className='row mx-atuo img-form-container'>
                   {imageUploads.length > 0 && (
                     <div>
                       <div className="previews">
                         {imageUploads.map((image, index) => (
                           <div key={index} className="preview">
-                            <img src={image.preview} alt={image.file.name} />
-                            <div>
-                              <input
-                                type="text"
-                                placeholder="Caption"
-                                value={image.caption}
-                                onChange={(event) => handleCaptionChange(event, index)}
-                              />
-                              <input
-                                type="text"
-                                placeholder="Credit"
-                                value={image.credit}
-                                onChange={(event) => handleCreditChange(event, index)}
-                              />
-                              <input
-                                type="text"
-                                placeholder="Model"
-                                value={image.model}
-                                onChange={(event) => handleModelChange(event, index)}
-                              />
-                              <button onClick={() => handleDeleteClick(index)}>Delete</button>
+                            <img className="img-thumbnail m-3" src={image.preview} alt={image.file.name} />
+                            <div className="inputfields">
+                              <input className="form-control m-2" type="text" placeholder="Caption" value={image.caption} onChange={(event) => handleCaptionChange(event, index)}/>
+                              <input className="form-control m-2" type="text" placeholder="Credit" value={image.credit} onChange={(event) => handleCreditChange(event, index)} />
+                              <input className="form-control m-2" type="text" placeholder="Model" value={image.model} onChange={(event) => handleModelChange(event, index)}/>
+                              <button className="btn btn-danger m-2 float-end delete-btn" onClick={() => handleDeleteClick(index)}><i className="bi bi-trash"></i></button>
                             </div>
                           </div>
                         ))}
                       </div>
-                      <button onClick={handleUploadClick}>Upload</button>
+                      <button className="btn btn-success float-end w-100" onClick={handleUploadClick}>Upload</button>
                     </div>
                   )}
-                  {uploadSuccess && (
-                    <div>
-                      <h2>Upload Successful!</h2>
-                    </div>
-                  )}
-                </div>
+                  
               </div>
+              {uploadSuccess && (
+                    <div>
+                      <h2 className="text-success text-center">Upload Successful!</h2>
+                    </div>
+                  )}
             </div>
           </div>
         </div>
