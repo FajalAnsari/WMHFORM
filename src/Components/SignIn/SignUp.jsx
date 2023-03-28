@@ -1,13 +1,22 @@
 import React, { useState } from 'react';
 import Navbar from "../Navbar/Navbar";
+import { useFirebase } from '../firebase-config';
+
+
 
 function SignUp() {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('');
 
-    const handleUsernameChange = (event) => {
-        setUsername(event.target.value);
+    const firebase = useFirebase();
+   
+
+    const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
+
+
+
+    const handleEmailChange = (event) => {
+        setEmail(event.target.value);
     }
 
     const handlePasswordChange = (event) => {
@@ -18,10 +27,16 @@ function SignUp() {
         setConfirmPassword(event.target.value);
     }
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
         // handle form submission
-        if (username && password && password === confirmPassword) {
+        console.log("Signin up a user...");
+    const result = await firebase.signupUserWithEmailAndPassword(
+      email,
+      password
+    );
+    console.log("Successfull", result);
+        if (email && password && password === confirmPassword) {
             // redirect to admin component
             window.location.href = '/admin';
         }
@@ -46,7 +61,7 @@ function SignUp() {
                             <div className='col-10 mx-auto'>
                                 <div className="row w-50 mx-auto">
                                     <div className="col-md-12">
-                                        <input className='form-control m-2' type="text" placeholder='Username' value={username} onChange={handleUsernameChange} />
+                                        <input className='form-control m-2' type="text" placeholder='Email' value={email} onChange={handleEmailChange} />
                                         <input className='form-control m-2' type="password" placeholder='Password' value={password} onChange={handlePasswordChange} />
                                         <input className='form-control m-2' type="password" placeholder='Confirm Password' value={confirmPassword} onChange={handleConfirmPasswordChange} />
                                     </div>
