@@ -116,6 +116,27 @@ function Dashboard() {
                       <p className="load-img-text2 ">
                         <strong>Model:</strong> {image.model}
                       </p>
+                      <p className="load-img-text2 ">
+                        <strong>Photo Grapher:</strong> {image.photographer}
+                      </p>
+                      <p className="load-img-text2 ">
+                        <strong>Fashion Designer:</strong> {image.fashiondesigner}
+                      </p>
+                      <p className="load-img-text2 ">
+                        <strong>Clothing Brand:</strong> {image.clothingbrand}
+                      </p>
+                      <p className="load-img-text2 ">
+                        <strong>Makeup Artist:</strong> {image.makeupartist}
+                      </p>
+                      <p className="load-img-text2 ">
+                        <strong>Lighting:</strong> {image.lighting}
+                      </p>
+                      <p className="load-img-text2 ">
+                        <strong>Studio Credits:</strong> {image.studiocredit}
+                      </p>
+                      <p className="load-img-text2 ">
+                        <strong>Other Credits:</strong> {image.othercredit}
+                      </p>
                       <button
                         className="btn btn-danger w-100"
                         onClick={() => handleDownloadClick(image.url)}

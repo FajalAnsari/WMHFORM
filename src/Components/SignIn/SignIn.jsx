@@ -67,7 +67,7 @@ useEffect(() => {
                 <div className="row w-50 mx-auto">
                     <div className="col-md-12">
                         <input className='form-control m-2' type="text" placeholder='Email' value={email} onChange={handleEmailChange}/>
-                        <input   className='form-control m-2' type="text" placeholder='Password' value={password} onChange={handlePasswordChange}/>
+                        <input   className='form-control m-2' type="password" placeholder='Password' value={password} onChange={handlePasswordChange}/>
                     </div>
                 </div>
                 <div className="row w-50 mx-auto">

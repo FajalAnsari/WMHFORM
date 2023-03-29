@@ -53,9 +53,9 @@ function App() {
     setImageUploads(newImageUploads);
   };
 
-  const handleCreditChange = (event, index) => {
+  const handlePhotoChange = (event, index) => {
     const newImageUploads = [...imageUploads];
-    newImageUploads[index].credit = event.target.value;
+    newImageUploads[index].photographer = event.target.value;
     setImageUploads(newImageUploads);
   };
 
@@ -65,7 +65,43 @@ function App() {
     setImageUploads(newImageUploads);
   };
 
+  const handleFashionChange = (event, index) => {
+    const newImageUploads = [...imageUploads];
+    newImageUploads[index].fashiondesigner = event.target.value;
+    setImageUploads(newImageUploads);
+  };
 
+  const handleClothChange = (event, index) => {
+    const newImageUploads = [...imageUploads];
+    newImageUploads[index].clothingbrand = event.target.value;
+    setImageUploads(newImageUploads);
+  };
+
+  const handleMakeupChange = (event, index) => {
+    const newImageUploads = [...imageUploads];
+    newImageUploads[index].makeupartist = event.target.value;
+    setImageUploads(newImageUploads);
+  };
+
+  const handleLightChange = (event, index) => {
+    const newImageUploads = [...imageUploads];
+    newImageUploads[index].lighting = event.target.value;
+    setImageUploads(newImageUploads);
+  };
+
+  const handleStudioChange = (event, index) => {
+    const newImageUploads = [...imageUploads];
+    newImageUploads[index].studiocredit = event.target.value;
+    setImageUploads(newImageUploads);
+  };
+
+  const handleOtherChange = (event, index) => {
+    const newImageUploads = [...imageUploads];
+    newImageUploads[index].othercredit = event.target.value;
+    setImageUploads(newImageUploads);
+  };
+
+  
   const handleUploadClick = () => {
     if (!name || !email) {
       alert("Please fill name and email before uploading.");
@@ -84,8 +120,15 @@ function App() {
                 return {
                   url,
                   caption: image.caption,
-                  credit: image.credit,
                   model: image.model,
+                  photographer: image.photographer,
+                  fashiondesigner: image.fashiondesigner,
+                  clothingbrand: image.clothingbrand,
+                  makeupartist: image.makeupartist,
+                  lighting: image.lighting,
+                  studiocredit: image.studiocredit,
+                  othercredit: image.othercredit,
+                 
                 };
               });
           });
@@ -101,8 +144,14 @@ function App() {
           addDoc(imageUploadsCollectionRef, {
             url: url.url,
             caption: url.caption,
-            credit: url.credit,
             model: url.model,
+            photographer: url.photographer,
+            fashiondesigner: url.fashiondesigner,
+            clothingbrand: url.clothingbrand,
+            makeupartist: url.makeupartist,
+            lighting: url.lighting,
+            studiocredit: url.studiocredit,
+            othercredit: url.othercredit,
             name: name,
             email: email,
           })
@@ -152,11 +201,19 @@ function App() {
                       <div className="previews">
                         {imageUploads.map((image, index) => (
                           <div key={index} className="preview">
-                            <img className="img-thumbnail m-3" src={image.preview} alt={image.file.name} />
+                            <img className="img-thumbnail m-3 " src={image.preview} alt={image.file.name} />
                             <div className="inputfields">
+                              <p className="text-white ms-2">Caption:</p>
                               <input className="form-control m-2" type="text" placeholder="Caption" value={image.caption} onChange={(event) => handleCaptionChange(event, index)}/>
-                              <input className="form-control m-2" type="text" placeholder="Credit" value={image.credit} onChange={(event) => handleCreditChange(event, index)} />
-                              <input className="form-control m-2" type="text" placeholder="Model" value={image.model} onChange={(event) => handleModelChange(event, index)}/>
+                              <p className="text-white ms-2">Credit:</p>
+                              <input className="form-control m-2" type="text" placeholder="Photographer" value={image.photographer} onChange={(event) => handlePhotoChange(event, index)} />
+                              <input className="form-control m-2" type="text" placeholder="Models" value={image.model} onChange={(event) => handleModelChange(event, index)}/>
+                              <input className="form-control m-2" type="text" placeholder="Fashion designer" value={image.fashiondesigner} onChange={(event) => handleFashionChange(event, index)} />
+                              <input className="form-control m-2" type="text" placeholder="Fashion/Clothing Brand" value={image.clothingbrand} onChange={(event) => handleClothChange(event, index)} />
+                              <input className="form-control m-2" type="text" placeholder="Makeup Artist" value={image.makeupartist} onChange={(event) => handleMakeupChange(event, index)} />
+                              <input className="form-control m-2" type="text" placeholder="Lightings" value={image.lighting} onChange={(event) => handleLightChange(event, index)} />
+                              <input className="form-control m-2" type="text" placeholder="Set/Studio Credits" value={image.studiocredit} onChange={(event) => handleStudioChange(event, index)} />
+                              <input className="form-control m-2" type="text" placeholder="Other Credits" value={image.othercredit} onChange={(event) => handleOtherChange(event, index)} />
                               <button className="btn btn-danger m-2 float-end delete-btn" onClick={() => handleDeleteClick(index)}><i className="bi bi-trash"></i></button>
                             </div>
                           </div>

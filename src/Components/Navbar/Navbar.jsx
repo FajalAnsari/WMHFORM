@@ -2,8 +2,9 @@ import React from 'react';
 import logo from "../../images/Logo-header.png";
 import '../Navbar/Navbar.css';
 import { Link } from 'react-router-dom';
-
 function Navbar() {
+  
+  
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -20,9 +21,9 @@ function Navbar() {
                 <li className='"nav-item'>
                   <Link to={"/"} className='nav-link m-2 Home'>Home</Link>
                 </li>
-                <li className='"nav-item'>
+                {/* <li className='"nav-item'>
                   <Link to={"/admin"} className='nav-link m-2'>Admin</Link>
-                </li>
+                </li> */}
                 <li className='"nav-item'>
                   <Link to={"/"}  className='nav-link m-2'>Digital</Link>
                 </li>
@@ -32,6 +33,10 @@ function Navbar() {
               </ul>
             </div>
           </div>
+          <p className="text-end me-4 m-2">Hello, Usha Singh</p>
+          <button className="btn btn-primary mt-2 d-inline m-2">
+                Logout
+              </button>
         </div>
       </nav>
     </>
