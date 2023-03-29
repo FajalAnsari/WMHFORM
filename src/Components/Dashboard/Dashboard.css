@@ -1,0 +1,9 @@
+.card-load-image{
+    border-radius: 5px;
+    margin-top: 10px;
+}
+.card-load-image img{
+    height: 500px;
+    width: 400px;
+    margin-bottom: 15px;
+}
