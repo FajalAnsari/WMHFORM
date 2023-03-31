@@ -1,19 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from "../Navbar/Navbar";
 import { useFirebase } from '../firebase-config';
-
+import { useNavigate } from "react-router-dom";
 
 
 function SignUp() {
-
+    const navigate = useNavigate();
     const firebase = useFirebase();
-   
+    
 
     const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
 
-
+    useEffect(() => {
+        if (firebase.isLoggedIn) {
+          // navigate to home
+          navigate("/signup");
+        }
+        
+      }, [firebase, navigate]);
+    
 
     const handleEmailChange = (event) => {
         setEmail(event.target.value);

@@ -11,13 +11,13 @@ function SignIn() {
     const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  // useEffect(() => {
-  //   if (firebase.isLoggedIn) {
-  //     // navigate to home
-  //     navigate("/dashboard");
-  //   }
+  useEffect(() => {
+    if (firebase.isLoggedIn) {
+      // navigate to home
+      navigate("/dashboard");
+    }
     
-  // }, [firebase, navigate]);
+  }, [firebase, navigate]);
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -36,16 +36,16 @@ const handleSubmit = async (e) => {
     // redirect to admin component
     window.location.href = '/dashboard';
 }
-localStorage.setItem('Signin', true);
-navigate('/dashboard');
+// localStorage.setItem('Signin', true);
+// navigate('/dashboard');
 };
 
-useEffect(() => {
-  let login = localStorage.getItem('Signin');
-  if(login){
-   navigate('/dashboard');
-  }
-});
+// useEffect(() => {
+//   let login = localStorage.getItem('Signin');
+//   if(login){
+//    navigate('/dashboard');
+//   }
+// });
 
   return (
     <>
